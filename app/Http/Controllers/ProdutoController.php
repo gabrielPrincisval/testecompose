@@ -53,12 +53,19 @@ class ProdutoController extends Controller
 
         //update/ atualizar
 
-        $produto = Produto::findOrFail(4);
-        $produto -> nome ='Super Monitor Ultrawide 36 plus';
-        $produto -> valor= 7000;
-        $produto -> save();
+        //$produto = Produto::findOrFail(4);
+        //$produto -> nome ='Super Monitor Ultrawide 36 plus';
+        //$produto -> valor= 7000;
+        //$produto -> save();
 
-       dd('Atualizou');
+       //dd('Atualizou');
+
+       //destroy/ excluir
+
+       //$produto = Produto::findOrFail(4);
+       //$produto->delete();
+
+       //dd('Excluiu');
 
 
 
