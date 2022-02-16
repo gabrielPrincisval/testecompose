@@ -2,11 +2,29 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\produto;
+use App\Models\Produto;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
 {
+
+ /*
+
+	https://laravel.com/docs/8.x/controllers#actions-handled-by-resource-controller
+
+
+    Dicas sobre resouces
+    index - listar todos os itens
+    create - exibe formulario para criacao
+    store - armazena conteudo do formulário para criacao
+    show - exibe um item
+    edit - formulario de edicao de um item
+    update - salva e edicao de um item
+    destroy - exclui um item
+    */
+
+
+
     /**
      * Display a listing of the resource.
      *
@@ -14,7 +32,38 @@ class ProdutoController extends Controller
      */
     public function index()
     {
-        dd('CHEGOU!!!!');
+        //index/listar
+        
+        //$produtos = Produto::orderby('nome','ASC')
+        //->get();
+        //dd($produtos);
+    
+        //store/salvar
+
+        //$produto = new Produto;
+        //$produto->nome = 'Monitor Ultrawide 36';
+        //$produto->valor = 3000;
+        //$produto->save();
+
+        //dd('Savlou!!');
+
+        //show / exibir
+        //$produto = Produto::findOrFail(4);
+        //dd($produto);
+
+        //update/ atualizar
+
+        $produto = Produto::findOrFail(4);
+        $produto -> nome ='Super Monitor Ultrawide 36 plus';
+        $produto -> valor= 7000;
+        $produto -> save();
+
+       dd('Atualizou');
+
+
+
+    
+    
     }
 
     /**
