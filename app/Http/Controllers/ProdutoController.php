@@ -34,9 +34,9 @@ class ProdutoController extends Controller
     {
         //index/listar
         
-        //$produtos = Produto::orderby('nome','ASC')
-        //->get();
-        //dd($produtos);
+        $produtos = Produto::orderby('nome','ASC')
+        ->get();
+        return view('produto.index',['produtos'=>$produtos]);
     
         //store/salvar
 
@@ -80,7 +80,9 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-        //
+      return view('produto.create');
+      
+        //dd('Entrou no create');  //
     }
 
     /**
@@ -91,7 +93,8 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $data=$request->all();
+       dd('Entrou no Store'); //
     }
 
     /**
