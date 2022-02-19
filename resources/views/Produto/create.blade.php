@@ -8,16 +8,30 @@
 </head>
 <body>
     
-{!! Form::open(['url' => '/poduto/create']) !!}
-    //
-{!! Form::close() !!}
+@if ($errors->any())
+    <div class="alert alert-danger">
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+    @endif
 
-{{echo Form::label('nome', 'Nome');}}
-{{echo Form::text('nome');}}
 
-{{echo Form::label('valor', 'Valor');}}
-{{echo Form::text('valor');}}
+{!! Form::open(['url' => '/produto/create']) !!}
+    
 
-echo Form::subimit('Click Me');
+
+{{ Form::label('nome', 'Nome')}}
+{{ Form::text('nome');}}
+<br>
+
+{{ Form::label('valor', 'Valor')}}
+{{ Form::text('valor')}}
+<br>
+{{ Form::submit('Click Me') }}
+
+{!!Form::close()!!}
 </body>
 </html>

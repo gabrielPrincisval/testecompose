@@ -8,6 +8,17 @@
 </head>
 <body>
 
+
+@if (session('status'))
+    <div class="alert alert-success">
+        {{ session('status') }}
+    </div>
+@endif
+
+
+
+
+
 <a href="{{ URL::to('produto/create')}}"> Criar</a>
 <table class="table no-margin">
         <thead>

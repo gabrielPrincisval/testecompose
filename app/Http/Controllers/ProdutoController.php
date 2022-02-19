@@ -93,9 +93,34 @@ class ProdutoController extends Controller
      */
     public function store(Request $request)
     {
-        $data=$request->all();
-       dd('Entrou no Store'); //
+
+
+        $messages = [
+            'nome.required' => 'O campo :attribute é obrigatorio',
+            'nome.min'      => 'O :attribute precisa ter no mínimo :min',
+            'valor.required'=> 'O campo :attribute é obrigatorio!',
+            'valor.numeric' => 'O campo :attribute precisa ser númerico!',
+        ];
+
+
+
+        $validated = $request->validate([
+            'nome' => 'required|min:5',
+            'valor' => 'required|numeric',
+        ], $messages);
+    
+    $produto = new Produto;
+        $produto->nome =  $request -> nome;
+        $produto->valor = $request-> valor;
+        $produto->save();
+
+        return redirect('/produto')->with('status', 'Produto criado com sucesso!');
+    
+    
+    
+    
     }
+
 
     /**
      * Display the specified resource.
