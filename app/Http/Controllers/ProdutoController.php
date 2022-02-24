@@ -128,9 +128,11 @@ class ProdutoController extends Controller
      * @param  \App\Models\produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function show(produto $produto)
+    public function show($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        return view('produto.show',['produto' => $produto]);
+
     }
 
     /**
@@ -139,10 +141,14 @@ class ProdutoController extends Controller
      * @param  \App\Models\produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function edit(produto $produto)
+    public function edit($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        return view('produto.edit',['produto' => $produto]);
+        
+
     }
+
 
     /**
      * Update the specified resource in storage.
@@ -151,9 +157,29 @@ class ProdutoController extends Controller
      * @param  \App\Models\produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, produto $produto)
+    public function update(Request $request)
     {
-        //
+        
+        $messages = [
+            'nome.required' => 'O campo :attribute é obrigatorio',
+            'nome.min'      => 'O :attribute precisa ter no mínimo :min',
+            'valor.required'=> 'O campo :attribute é obrigatorio!',
+            'valor.numeric' => 'O campo :attribute precisa ser númerico!',
+        ];
+
+
+
+        $validated = $request->validate([
+            'nome' => 'required|min:5',
+            'valor' => 'required|numeric',
+        ], $messages);
+    
+    $produto = Produto::findOrFail($request->$id);
+        $produto->nome =  $request -> nome;
+        $produto->valor = $request-> valor;
+        $produto->save();
+
+        return redirect('/produto')->with('status', 'Produto criado com sucesso!');
     }
 
     /**
