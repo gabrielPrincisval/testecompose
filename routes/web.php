@@ -18,7 +18,8 @@ Route::get('/', function () {
     return redirect('/produto');
 });
 
- 
+//-----------------------PRODUTO------------------------------------
+
 Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
 
 Route::get('/produto/create',[ProdutoController::class,'create'])->name('produto.create');
@@ -32,3 +33,6 @@ Route::put('/produto/{id}',[ProdutoController::class,'update'])->name('produto.u
 Route::delete('/produto/{id}', [ProdutoController::class, 'destroy'])->name('produto.destroy');
 
 
+//------------------------------------CATEGORIA-------------------------------------------
+
+Route::get('/categoria',[CategoriaController::class, 'index'])->name('categoria.index');
