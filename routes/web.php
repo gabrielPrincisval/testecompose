@@ -15,18 +15,20 @@ use App\Http\Controllers\ProdutoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/produto');
 });
 
  
 Route::get('/produto', [ProdutoController::class, 'index'])->name('produto.index');
 
+Route::get('/produto/create',[ProdutoController::class,'create'])->name('produto.create');
+Route::post('/produto/create',[ProdutoController::class,'store'])->name('produto.store');
+
 Route::get('/produto/{id}', [ProdutoController::class, 'show'])->name('produto.show');
 
 Route::get('/produto/{id}/edit', [ProdutoController::class, 'edit'])->name('produto.edit');
+Route::put('/produto/{id}',[ProdutoController::class,'update'])->name('produto.update');
 
-Route::get('/produto/create',[ProdutoController::class,'create'])->name('produto.create');
+Route::delete('/produto/{id}', [ProdutoController::class, 'destroy'])->name('produto.destroy');
 
-Route::post('/produto/create',[ProdutoController::class,'store'])->name('produto.store');
 
-Route::put('/produto/edit',[ProdutoController::class,'update'])->name('produto.update');
