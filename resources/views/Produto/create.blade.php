@@ -24,13 +24,13 @@
 
 
 {{ Form::label('nome', 'Nome')}}
-{{ Form::text('nome');}}
+{{ Form::text('nome')}}
 <br>
 
 {{ Form::label('valor', 'Valor')}}
 {{ Form::text('valor')}}
 <br>
-{{ Form::submit('Click Me') }}
+{{ Form::submit('Enviar') }}
 
 {!!Form::close()!!}
 </body>
