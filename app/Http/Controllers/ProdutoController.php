@@ -36,7 +36,7 @@ class ProdutoController extends Controller
         
         $produtos = Produto::orderby('nome','ASC')
         ->get();
-        return view('produto.index',['produtos'=>$produtos]);
+        return view('produto.index',['produtos' => $produtos]);
     
         //store/salvar
 
@@ -94,7 +94,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
 
-
+        dd('chegou!');
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatorio',
             'nome.min'      => 'O :attribute precisa ter no mínimo :min',
@@ -114,7 +114,7 @@ class ProdutoController extends Controller
         $produto->valor = $request-> valor;
         $produto->save();
 
-        return redirect('/produto')->with('status', 'Produto criado com sucesso!');
+        return redirect('/produto')->with('status', 'Produto atualizado com sucesso!');
     
     
     
@@ -157,7 +157,7 @@ class ProdutoController extends Controller
      * @param  \App\Models\produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request)
+    public function update(Request $request, $id)
     {
         
         $messages = [
@@ -174,7 +174,7 @@ class ProdutoController extends Controller
             'valor' => 'required|numeric',
         ], $messages);
     
-    $produto = Produto::findOrFail($request->$id);
+    $produto = Produto::findOrFail($id);
         $produto->nome =  $request -> nome;
         $produto->valor = $request-> valor;
         $produto->save();
@@ -188,8 +188,10 @@ class ProdutoController extends Controller
      * @param  \App\Models\produto  $produto
      * @return \Illuminate\Http\Response
      */
-    public function destroy(produto $produto)
+    public function destroy($id)
     {
-        //
+        $produto = Produto::findOrFail($id);
+        $produto->delete();
+        return redirect('/produto')->with('status', 'Produto excluido com sucesso!');
     }
 }
