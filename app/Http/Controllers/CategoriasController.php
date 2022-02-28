@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Categoria;
+use App\Models\Categorias;
 use Illuminate\Http\Request;
 
-class CategoriaController extends Controller
+class CategoriasController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,7 +14,7 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        
+       //
     }
 
     /**
