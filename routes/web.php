@@ -36,3 +36,4 @@ Route::delete('/produto/{id}', [ProdutoController::class, 'destroy'])->name('pro
 //------------------------------------CATEGORIA-------------------------------------------
 
 
+
