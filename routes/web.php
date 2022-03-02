@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CategoriaController;
 use App\Http\Controllers\ProdutoController;
 /*
 |--------------------------------------------------------------------------
@@ -35,4 +35,4 @@ Route::delete('/produto/{id}', [ProdutoController::class, 'destroy'])->name('pro
 
 //------------------------------------CATEGORIA-------------------------------------------
 
-Route::get('/categorias',[CategoriasController::class, 'index'])->name('categorias.index');
+

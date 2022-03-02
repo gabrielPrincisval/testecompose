@@ -3,8 +3,8 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-use App\Models\Categorias;
-class CategoriasSeeder extends Seeder
+use App\Models\Categoria;
+class CategoriaSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -13,7 +13,7 @@ class CategoriasSeeder extends Seeder
      */
     public function run()
     {
-        Categorias::create([
+        Categoria::create([
 
             'nome' => 'Perifericos Gamers'
 
@@ -21,10 +21,12 @@ class CategoriasSeeder extends Seeder
 
         ]);
 
-        Categorias::create([
-            'nome' => 'Perifericos para devs'
+        Categoria::create([
+
+            'nome' => 'Perifericos para Devs'
 
 
         ]);
+
     }
 }
