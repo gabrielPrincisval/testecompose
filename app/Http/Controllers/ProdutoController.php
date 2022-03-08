@@ -34,9 +34,9 @@ class ProdutoController extends Controller
     {
         //index/listar
         
-        $produtos = Produto::orderby('nome','ASC')
+        $produto = Produto::orderby('nome','ASC')
         ->get();
-        return view('produto.index',['produtos' => $produtos]);
+        return view('produto.index',['produtos' => $produto]);
     
         //store/salvar
 
@@ -94,7 +94,7 @@ class ProdutoController extends Controller
     public function store(Request $request)
     {
 
-        dd('chegou!');
+        
         $messages = [
             'nome.required' => 'O campo :attribute é obrigatorio',
             'nome.min'      => 'O :attribute precisa ter no mínimo :min',

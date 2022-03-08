@@ -4,6 +4,7 @@ namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
 use App\Models\Produto;
+
 class ProdutoSeeder extends Seeder
 {
     /**
@@ -28,5 +29,12 @@ class ProdutoSeeder extends Seeder
             'nome'   =>'Gabinete',
             'Valor'  => 350
         ]);
+
+
+        Produto::create([
+            'nome'   =>'Headset',
+            'Valor'  => 250
+        ]);
+    
     }
 }
