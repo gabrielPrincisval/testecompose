@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Produto;
+use App\Models\Categoria;
 use Illuminate\Http\Request;
 
 class ProdutoController extends Controller
@@ -34,9 +35,9 @@ class ProdutoController extends Controller
     {
         //index/listar
         
-        $produto = Produto::orderby('nome','ASC')
+        $produtos = Produto::orderby('nome','ASC')
         ->get();
-        return view('produto.index',['produtos' => $produto]);
+        return view('produto.index',['produtos' => $produtos]);
     
         //store/salvar
 
@@ -80,9 +81,11 @@ class ProdutoController extends Controller
      */
     public function create()
     {
-      return view('produto.create');
       
-        //dd('Entrou no create');  //
+        $categorias = Categoria::orderBy('nome', 'ASC')->pluck('nome', 'id');
+        return view('produto.create', ['categorias' => $categorias]);
+    
+      
     }
 
     /**
@@ -96,22 +99,23 @@ class ProdutoController extends Controller
 
         
         $messages = [
-            'nome.required' => 'O campo :attribute é obrigatorio',
-            'nome.min'      => 'O :attribute precisa ter no mínimo :min',
-            'valor.required'=> 'O campo :attribute é obrigatorio!',
-            'valor.numeric' => 'O campo :attribute precisa ser númerico!',
+            'categoria_id.required' => 'O campo categoria é obrigatório',
+            'nome.required'         => 'O campo :attribute é obrigatorio',
+            'nome.min'              => 'O :attribute precisa ter no mínimo :min',
+            'valor.required'        => 'O campo :attribute é obrigatorio!',
+            'valor.numeric'         => 'O campo :attribute precisa ser númerico!',
         ];
 
-
-
         $validated = $request->validate([
-            'nome' => 'required|min:5',
-            'valor' => 'required|numeric',
+            'categoria_id'  => 'required',
+            'nome'          => 'required|min:5',
+            'valor'         => 'required|numeric',
         ], $messages);
     
-    $produto = new Produto;
-        $produto->nome =  $request -> nome;
-        $produto->valor = $request-> valor;
+        $produto = new Produto;
+        $produto->categoria_id      = $request->categoria_id;
+        $produto->nome              =  $request->nome;
+        $produto->valor             = $request->valor;
         $produto->save();
 
         return redirect('/produto')->with('status', 'Produto atualizado com sucesso!');
@@ -143,8 +147,9 @@ class ProdutoController extends Controller
      */
     public function edit($id)
     {
+        $categorias = Categoria::OrderBy('nome', 'ASC')->pluck('nome', 'id');
         $produto = Produto::findOrFail($id);
-        return view('produto.edit',['produto' => $produto]);
+        return view('produto.edit',['produto' => $produto, 'categorias' => $categorias]);
         
 
     }
@@ -170,11 +175,13 @@ class ProdutoController extends Controller
 
 
         $validated = $request->validate([
+            'categoria_id' => 'required',
             'nome' => 'required|min:5',
             'valor' => 'required|numeric',
         ], $messages);
     
     $produto = Produto::findOrFail($id);
+        $produto->categoria_id = $request->categoria_id;
         $produto->nome =  $request -> nome;
         $produto->valor = $request-> valor;
         $produto->save();

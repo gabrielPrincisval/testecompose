@@ -9,9 +9,10 @@
 <body>
     
 <h2>Produto</h2>
-    <p><b>Nome:</b>    {{ $produto->nome               }} </p>
-    <p><b>Valor:</b>   {{ $produto->valor              }} </p>
-    <p><b>Criação:</b> {{ $produto->created_at         }} </p>
+    <p><b>Nome:</b>     {{ $produto->nome               }} </p>
+    <p><b>Categoria:</b>{{ $produto->categoria->nome    }} </p>
+    <p><b>Valor:</b>    {{ $produto->valor              }} </p>
+    <p><b>Criação:</b>  {{ $produto->created_at         }} </p>
  
 </body>
 </html>

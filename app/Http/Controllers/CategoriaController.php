@@ -13,8 +13,8 @@ class CategoriaController extends Controller
      */
     public function index()
     {
-        $categoria = Categoria::Orderby('Nome', 'ASC')->get();
-        return view('categoria.index',['categorias'=>$categoria]);
+        $categorias = Categoria::Orderby('Nome', 'ASC')->get();
+        return view('categoria.index',['categorias'=>$categorias]);
     }
 
     /**
