@@ -34,11 +34,7 @@ class ProdutoSeeder extends Seeder
         ]);
 
 
-        Produto::create([
-            'categoria_id'  => 4,
-            'nome'   =>'Headset',
-            'Valor'  => 250
-        ]);
+    
     
     }
 }

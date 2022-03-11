@@ -67,8 +67,8 @@
 
         <tr>
             <td>{{$value->id}}</td>
-            <td>{{ $value->categoria->nome }}</td>
-            <td>{{ $value->nome }}</td>
+            <td>{{$value->categoria->nome }}</td>
+            <td>{{$value->nome }}</td>
             <td>{{$value->valor}}</td>
             <td><a href =   "{{ url('produto/' . $value->id  )}}"> Visualizar  </a> </td>
             <td> <a href =  "{{ url('produto/' . $value->id . '/edit' )}}"> Editar  </a>  </td>
