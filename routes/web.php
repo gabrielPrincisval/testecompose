@@ -14,9 +14,9 @@ use App\Http\Controllers\ProdutoController;
 |
 */
 
-Route::get('/', function () {
-    return redirect('/produto');
-});
+//Route::get('/', function () {
+    //return redirect('/produto');
+//});
 
 //-----------------------PRODUTO------------------------------------
 
@@ -47,3 +47,7 @@ Route::get('/categoria/{id}/edit', [CategoriaController::class, 'edit'])->name('
 Route::put('/categoria/{id}', [CategoriaController::class, 'update'])->name('categoria.update');
 
 Route::delete('/categoria/{id}', [CategoriaController::class, 'destroy'])->name('categoria.destroy');
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

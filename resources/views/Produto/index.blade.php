@@ -1,36 +1,19 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Produto</title>
+@extends('adminlte::page')
 
-{{-- STYLE --}}
-<style>
-    *{
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        font-family: sans-serif, serif;
-    }
-    table a{
-        margin: 0 1.8rem;
-        text-decoration: none;
-        color: rgb(53, 53, 53);
-        border: 1px solid rgb(53, 53, 53); 
-        padding: 2px;
-        transition: .5s;
-    }
-    table a:hover{
-     background: blueviolet;
-    }
-    input[type='submit']{
-        cursor: pointer;
-    }
-</style>
-</head>
-<body>
+@section('content')
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">{{ __('Dashboard') }}</div>
+
+                <div class="card-body">
+                    @if (session('status'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session('status') }}
+                        </div>
+                    @endif
+
 
 
 @if (session('status'))
@@ -88,5 +71,11 @@
 
 
 
-</body>
-</html>
+
+
+</div>
+</div>
+</div>
+</div>
+</div>
+@endsection

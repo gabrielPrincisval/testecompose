@@ -32,9 +32,5 @@ class ProdutoSeeder extends Seeder
             'nome'   =>'Gabinete',
             'Valor'  => 350
         ]);
-
-
-    
-    
     }
 }
